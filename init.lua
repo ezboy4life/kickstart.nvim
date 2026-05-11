@@ -690,8 +690,9 @@ do
     -- rust_analyzer = {},
     ts_ls = {},
     stylua = {},
-    cssls = {},
     html = {},
+    cssls = {},
+    css_variables = {},
 
     -- Special Lua Config, as recommended by neovim help docs
     lua_ls = {
