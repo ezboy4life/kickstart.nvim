@@ -156,6 +156,11 @@ do
   vim.o.list = true
   vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
+  vim.opt.tabstop = 2 -- Visual width of a tab
+  vim.opt.softtabstop = 2 -- Number of spaces a tab counts for during editing
+  vim.opt.shiftwidth = 2 -- Size of an indent
+  vim.opt.expandtab = true -- Turn tabs into spaces
+
   -- Preview substitutions live, as you type!
   vim.o.inccommand = 'split'
 
@@ -173,7 +178,7 @@ do
   -- [[ Basic Keymaps ]]
   --  See `:help vim.keymap.set()`
 
-  vim.keymap.set('n', '<leader>pv', vim.cmd.Ex);
+  vim.keymap.set('n', '<leader>pv', vim.cmd.Ex)
 
   -- Clear highlights on search when pressing <Esc> in normal mode
   --  See `:help hlsearch`
