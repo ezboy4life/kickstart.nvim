@@ -967,6 +967,7 @@ do
   -- require 'kickstart.plugins.neo-tree'
   require 'kickstart.plugins.gitsigns' -- adds gitsigns recommended keymaps
   require 'kickstart.plugins.ts_autotags'
+  require 'custom.plugins.spectre'
 
   -- NOTE: You can add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --
