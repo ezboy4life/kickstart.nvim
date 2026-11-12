@@ -315,6 +315,7 @@ do
   vim.pack.add { gh 'folke/tokyonight.nvim' }
   ---@diagnostic disable-next-line: missing-fields
   require('tokyonight').setup {
+    transparent = true,
     styles = {
       comments = { italic = false }, -- Disable italics in comments
     },
@@ -696,26 +697,12 @@ do
     vim.lsp.enable(name)
   end
 
-  -- Godot LSP & editor pipefile
-  -- paths to check for project.godot file
-  local paths_to_check = { '/', '/../' }
-  local is_godot_project = false
-  local godot_project_path = ''
-  local cwd = vim.fn.getcwd()
-
-  -- iterate over paths and check
-  for key, value in pairs(paths_to_check) do
-    if vim.uv.fs_stat(cwd .. value .. 'project.godot') then
-      is_godot_project = true
-      godot_project_path = cwd .. value
-      break
-    end
+  -- Godot
+  local gdproject = io.open(vim.fn.getcwd()..'/project.godot', 'r')
+  if gdproject then
+      io.close(gdproject)
+      vim.fn.serverstart './godothost'
   end
-
-  -- check if server is already running in godot project path
-  local is_server_running = vim.uv.fs_stat(godot_project_path .. '/server.pipe')
-  -- start server, if not already running
-  if is_godot_project and not is_server_running then vim.fn.serverstart(godot_project_path .. '/server.pipe') end
 
   vim.lsp.config('gdscript', {})
   vim.lsp.enable 'gdscript'
